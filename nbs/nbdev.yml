@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "slg_vae"
+  site-url: "https://slegroux.github.io/slg_vae"
+  description: "variational autoencoder"
+  repo-branch: main
+  repo-url: "https://github.com/slegroux/slg_vae"
