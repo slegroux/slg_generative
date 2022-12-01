@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://slegroux.github.io/slg_vae/core.html</loc>
-    <lastmod>2022-12-01T00:07:44.271Z</lastmod>
+    <loc>https://slegroux.github.io/slg_generative/vae.html</loc>
+    <lastmod>2022-12-01T18:37:54.768Z</lastmod>
   </url>
   <url>
-    <loc>https://slegroux.github.io/slg_vae/index.html</loc>
-    <lastmod>2022-12-01T01:17:38.178Z</lastmod>
+    <loc>https://slegroux.github.io/slg_generative/index.html</loc>
+    <lastmod>2022-12-01T19:01:18.696Z</lastmod>
   </url>
   <url>
-    <loc>https://slegroux.github.io/slg_vae/vae.html</loc>
-    <lastmod>2022-12-01T01:17:34.220Z</lastmod>
+    <loc>https://slegroux.github.io/slg_generative/models.vae.html</loc>
+    <lastmod>2022-12-01T19:02:34.257Z</lastmod>
+  </url>
+  <url>
+    <loc>https://slegroux.github.io/slg_generative/data.datasets.html</loc>
+    <lastmod>2022-12-01T20:09:01.238Z</lastmod>
   </url>
 </urlset>

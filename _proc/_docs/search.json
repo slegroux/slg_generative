@@ -1,37 +1,44 @@
 [
   {
-    "objectID": "core.html",
-    "href": "core.html",
-    "title": "vae",
+    "objectID": "vae.html",
+    "href": "vae.html",
+    "title": "Variational AutoEncoder Models",
     "section": "",
-    "text": "foo\n\n foo ()\n\n\n\n\ntest\n\n test (a:float, b:float)\n\nsummary\nArgs: a (float): description b (float): description\nReturns: type: description"
+    "text": "FashionMnistDataset\n\n FashionMnistDataset (csv_file='~/Data/fashion-mnist/fashion-\n                      mnist_train.csv')\n\nFashion MNIST Dataset\n\nmap_labels = {\n  \"0\": \"T-shirt/top\", \"1\": \"Trouser\", \"2\": \"Pullover\", \"3\": \"Dress\",\n  \"4\": \"Coat\", \"5\": \"Sandal\", \"6\": \"Shirt\", \"7\": \"Sneaker\", \"8\": \"Bag\",\n  \"9\": \"Ankle boot\"\n}\n\nds = FashionMnistDataset()\ndl = torch.utils.data.DataLoader(ds, batch_size=128, shuffle=True)\n\nX, y = next(iter(dl))\nprint(X.type(), y.type())\n\nplt.figure(figsize = (1, 1))\nbatch_n = 0\nplt.imshow(X[batch_n].numpy().reshape(28,28),cmap='gray')\nplt.title(map_labels[str(int(y[batch_n]))])\nplt.show()\nprint(f\"shape of image batch: {X.shape}, Shape of labels: {y.shape}\")\n\ntorch.DoubleTensor torch.IntTensor\n\n\n\n\n\nshape of image batch: torch.Size([128, 784]), Shape of labels: torch.Size([128])\n\n\n\n\n\nEncoder\n\n Encoder (latent_dim=2)\n\nEncoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension\n\n\n\n\nprint(X.type())\ne = Encoder()\nee = e(X.type(torch.FloatTensor))\nprint(ee.shape, ee.type())\n\ntorch.DoubleTensor\ntorch.Size([128, 2]) torch.FloatTensor\n\n\n\n\n\nDecoder\n\n Decoder (latent_dim:int=2)\n\nDecoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension\n\n\n\n\n\n\nAutoEncoder\n\n AutoEncoder (latent_dim:int=2)\n\nautoencoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "slg_vae",
+    "title": "slg_generative",
     "section": "",
-    "text": "This file will become your README and also the index of your documentation."
+    "text": "Looking at foundation of generative AI, starting with Variational AutoEncoders. More to come later!"
   },
   {
     "objectID": "index.html#install",
     "href": "index.html#install",
-    "title": "slg_vae",
+    "title": "slg_generative",
     "section": "Install",
-    "text": "Install\npip install slg_vae"
+    "text": "Install\npip install slg_generative"
   },
   {
     "objectID": "index.html#how-to-use",
     "href": "index.html#how-to-use",
-    "title": "slg_vae",
+    "title": "slg_generative",
     "section": "How to use",
-    "text": "How to use\nFill me in please! Don’t forget code examples:\n\n1+1\n\n2"
+    "text": "How to use\nSome example usage of the library\n\nfrom slg_generative.models.vae import AutoEncoder\nae = AutoEncoder()\n\n2"
   },
   {
-    "objectID": "vae.html",
-    "href": "vae.html",
-    "title": "vae",
+    "objectID": "models.vae.html",
+    "href": "models.vae.html",
+    "title": "VAE Models",
     "section": "",
-    "text": "foo\n\n foo ()\n\n\n\n\ntest\n\n test (a:float, b:float)\n\nsummary\nArgs: a (float): description b (float): description\nReturns: type: description"
+    "text": "FashionMnistDataset\n\n FashionMnistDataset (csv_file:str='~/Data/fashion-mnist/fashion-\n                      mnist_train.csv')\n\nFashion MNIST Dataset\n\n\n\n\n\n\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ncsv_file\nstr\n~/Data/fashion-mnist/fashion-mnist_train.csv\nPath to csv data file\n\n\n\n\nmap_labels = {\n  \"0\": \"T-shirt/top\", \"1\": \"Trouser\", \"2\": \"Pullover\", \"3\": \"Dress\",\n  \"4\": \"Coat\", \"5\": \"Sandal\", \"6\": \"Shirt\", \"7\": \"Sneaker\", \"8\": \"Bag\",\n  \"9\": \"Ankle boot\"\n}\n\nds = FashionMnistDataset()\ndl = torch.utils.data.DataLoader(ds, batch_size=128, shuffle=True)\n\nX, y = next(iter(dl))\nprint(X.type(), y.type())\n\nplt.figure(figsize = (1, 1))\nbatch_n = 0\nplt.imshow(X[batch_n].numpy().reshape(28,28),cmap='gray')\nplt.title(map_labels[str(int(y[batch_n]))])\nplt.show()\nprint(f\"shape of image batch: {X.shape}, Shape of labels: {y.shape}\")\n\ntorch.DoubleTensor torch.IntTensor\n\n\n\n\n\nshape of image batch: torch.Size([128, 784]), Shape of labels: torch.Size([128])\n\n\n\n\n\nEncoder\n\n Encoder (latent_dim=2)\n\nEncoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension\n\n\n\n\nprint(X.type())\ne = Encoder()\nee = e(X.type(torch.FloatTensor))\nprint(ee.shape, ee.type())\n\ntorch.DoubleTensor\ntorch.Size([128, 2]) torch.FloatTensor\n\n\n\n\n\nDecoder\n\n Decoder (latent_dim:int=2)\n\nDecoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension\n\n\n\n\n\n\nAutoEncoder\n\n AutoEncoder (latent_dim:int=2)\n\nautoencoder\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\nlatent_dim\nint\n2\nLatent dimension"
+  },
+  {
+    "objectID": "data.datasets.html",
+    "href": "data.datasets.html",
+    "title": "Datasets",
+    "section": "",
+    "text": "ImageDataset\n\n ImageDataset ()\n\nBase class for image datasets providing visualization of (image, label) samples\n\n\n\nMnistDataset\n\n MnistDataset (data_root:str='./data')\n\nMNIST digit dataset\n\n\n\n\nType\nDefault\nDetails\n\n\n\n\ndata_root\nstr\n./data\nPath to data root folder\n\n\n\n\nds = MnistDataset('~/Data')\nprint(f\"Number of samples in the dataset: {len(ds)}\")\nX,y = ds[0]\nprint(f\"Shape of image: {X.shape}, corresponding digit: {int(y)}\")\nprint(f\"types: {X.type()}, {y.type()}\")\n\nds.show(0)\n\nNumber of samples in the dataset: 60000\nShape of image: torch.Size([784]), corresponding digit: 5\ntypes: torch.FloatTensor, torch.LongTensor\n\n\n\n\n\n\n\n\nFashionMnistDataset\n\n FashionMnistDataset (csv_file:str)\n\nFashion MNIST Dataset\n\n\n\n\nType\nDetails\n\n\n\n\ncsv_file\nstr\nPath to csv data file\n\n\n\n\nmap_labels = {\n  \"0\": \"T-shirt/top\", \"1\": \"Trouser\", \"2\": \"Pullover\", \"3\": \"Dress\",\n  \"4\": \"Coat\", \"5\": \"Sandal\", \"6\": \"Shirt\", \"7\": \"Sneaker\", \"8\": \"Bag\",\n  \"9\": \"Ankle boot\"\n}\n\nds = FashionMnistDataset(csv_file=\"~/Data/fashion-mnist/fashion-mnist_train.csv\")\nprint(f\"Number of samples in the dataset: {len(ds)}\")\nX,y = ds[0]\n\nprint(f\"Shape of image: {X.shape}, corresponding label: {map_labels[str(int(y))]}\")\nds.show(0)\n\ndl = torch.utils.data.DataLoader(ds, batch_size=128, shuffle=True)\n\nX, y = next(iter(dl))\nprint(f\"types of batch content: {X.type()}, {y.type()}\")\n\nNumber of samples in the dataset: 60000\nShape of image: torch.Size([784]), corresponding label: Pullover\n\n\n\n\n\ntypes of batch content: torch.DoubleTensor, torch.IntTensor"
   }
 ]

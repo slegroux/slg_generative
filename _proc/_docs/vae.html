@@ -8,7 +8,7 @@
 
 <meta name="description" content="implements simple version of Variational AutoEncoder for educational purposes">
 
-<title>slg_vae - vae</title>
+<title>slg_generative - Variational AutoEncoder Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -62,10 +125,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="slg_vae - vae">
+<meta property="og:title" content="slg_generative - Variational AutoEncoder Models">
 <meta property="og:description" content="implements simple version of Variational AutoEncoder for educational purposes">
-<meta property="og:site-name" content="slg_vae">
-<meta name="twitter:title" content="slg_vae - vae">
+<meta property="og:site-name" content="slg_generative">
+<meta name="twitter:title" content="slg_generative - Variational AutoEncoder Models">
 <meta name="twitter:description" content="implements simple version of Variational AutoEncoder for educational purposes">
 <meta name="twitter:card" content="summary">
 </head>
@@ -78,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">slg_vae</span>
+    <span class="navbar-title">slg_generative</span>
     </a>
   </div>
           <div id="quarto-search" class="" title="Search"></div>
@@ -86,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">vae</h1>
+      <h1 class="quarto-secondary-nav-title">Variational AutoEncoder Models</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -101,12 +164,12 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">slg_vae</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">slg_generative</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vae.html" class="sidebar-item-text sidebar-link active">vae</a>
+  <a href="./vae.html" class="sidebar-item-text sidebar-link active">Variational AutoEncoder Models</a>
   </div>
 </li>
     </ul>
@@ -118,17 +181,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#foo" id="toc-foo" class="nav-link active" data-scroll-target="#foo">foo</a></li>
-  <li><a href="#test" id="toc-test" class="nav-link" data-scroll-target="#test">test</a></li>
+  <li><a href="#fashionmnistdataset" id="toc-fashionmnistdataset" class="nav-link active" data-scroll-target="#fashionmnistdataset">FashionMnistDataset</a></li>
+  <li><a href="#encoder" id="toc-encoder" class="nav-link" data-scroll-target="#encoder">Encoder</a></li>
+  <li><a href="#decoder" id="toc-decoder" class="nav-link" data-scroll-target="#decoder">Decoder</a></li>
+  <li><a href="#autoencoder" id="toc-autoencoder" class="nav-link" data-scroll-target="#autoencoder">AutoEncoder</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/slegroux/slg_vae/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/slegroux/slg_generative/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">vae</h1>
+<h1 class="title d-none d-lg-block">Variational AutoEncoder Models</h1>
 </div>
 
 <div>
@@ -150,21 +215,130 @@ ul.task-list li input[type="checkbox"] {
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
 <hr>
-<section id="foo" class="level3">
-<h3 class="anchored" data-anchor-id="foo">foo</h3>
+<section id="fashionmnistdataset" class="level3">
+<h3 class="anchored" data-anchor-id="fashionmnistdataset">FashionMnistDataset</h3>
 <blockquote class="blockquote">
-<pre><code> foo ()</code></pre>
+<pre><code> FashionMnistDataset (csv_file='~/Data/fashion-mnist/fashion-
+                      mnist_train.csv')</code></pre>
 </blockquote>
+<p>Fashion MNIST Dataset</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>map_labels <span class="op">=</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"0"</span>: <span class="st">"T-shirt/top"</span>, <span class="st">"1"</span>: <span class="st">"Trouser"</span>, <span class="st">"2"</span>: <span class="st">"Pullover"</span>, <span class="st">"3"</span>: <span class="st">"Dress"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"4"</span>: <span class="st">"Coat"</span>, <span class="st">"5"</span>: <span class="st">"Sandal"</span>, <span class="st">"6"</span>: <span class="st">"Shirt"</span>, <span class="st">"7"</span>: <span class="st">"Sneaker"</span>, <span class="st">"8"</span>: <span class="st">"Bag"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"9"</span>: <span class="st">"Ankle boot"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> FashionMnistDataset()</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>dl <span class="op">=</span> torch.utils.data.DataLoader(ds, batch_size<span class="op">=</span><span class="dv">128</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> <span class="bu">next</span>(<span class="bu">iter</span>(dl))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.<span class="bu">type</span>(), y.<span class="bu">type</span>())</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>batch_n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.imshow(X[batch_n].numpy().reshape(<span class="dv">28</span>,<span class="dv">28</span>),cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.title(map_labels[<span class="bu">str</span>(<span class="bu">int</span>(y[batch_n]))])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"shape of image batch: </span><span class="sc">{</span>X<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">, Shape of labels: </span><span class="sc">{</span>y<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.DoubleTensor torch.IntTensor</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="00_vae_files/figure-html/cell-3-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>shape of image batch: torch.Size([128, 784]), Shape of labels: torch.Size([128])</code></pre>
+</div>
+</div>
 <hr>
 </section>
-<section id="test" class="level3">
-<h3 class="anchored" data-anchor-id="test">test</h3>
+<section id="encoder" class="level3">
+<h3 class="anchored" data-anchor-id="encoder">Encoder</h3>
 <blockquote class="blockquote">
-<pre><code> test (a:float, b:float)</code></pre>
+<pre><code> Encoder (latent_dim=2)</code></pre>
 </blockquote>
-<p><em>summary</em></p>
-<p>Args: a (float): <em>description</em> b (float): <em>description</em></p>
-<p>Returns: <em>type</em>: <em>description</em></p>
+<p>Encoder</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>latent_dim</td>
+<td>int</td>
+<td>2</td>
+<td>Latent dimension</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.<span class="bu">type</span>())</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> Encoder()</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ee <span class="op">=</span> e(X.<span class="bu">type</span>(torch.FloatTensor))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ee.shape, ee.<span class="bu">type</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.DoubleTensor
+torch.Size([128, 2]) torch.FloatTensor</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="decoder" class="level3">
+<h3 class="anchored" data-anchor-id="decoder">Decoder</h3>
+<blockquote class="blockquote">
+<pre><code> Decoder (latent_dim:int=2)</code></pre>
+</blockquote>
+<p>Decoder</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>latent_dim</td>
+<td>int</td>
+<td>2</td>
+<td>Latent dimension</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="autoencoder" class="level3">
+<h3 class="anchored" data-anchor-id="autoencoder">AutoEncoder</h3>
+<blockquote class="blockquote">
+<pre><code> AutoEncoder (latent_dim:int=2)</code></pre>
+</blockquote>
+<p>autoencoder</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>latent_dim</td>
+<td>int</td>
+<td>2</td>
+<td>Latent dimension</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>

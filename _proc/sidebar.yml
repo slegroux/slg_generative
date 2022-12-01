@@ -2,4 +2,5 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - 00_vae.ipynb
+      - 00_models.vae.ipynb
+      - 01_data.datasets.ipynb
