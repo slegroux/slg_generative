@@ -5,4 +5,6 @@ d = { 'settings': { 'branch': 'main',
                 'doc_host': 'https://slegroux.github.io',
                 'git_url': 'https://github.com/slegroux/slg_vae',
                 'lib_path': 'slg_vae'},
-  'syms': {'slg_vae.core': {'slg_vae.core.foo': ('core.html#foo', 'slg_vae/core.py')}}}
+  'syms': { 'slg_vae.core': {'slg_vae.core.foo': ('core.html#foo', 'slg_vae/core.py')},
+            'slg_vae.vae': { 'slg_vae.vae.foo': ('core.html#foo', 'slg_vae/vae.py'),
+                             'slg_vae.vae.test': ('core.html#test', 'slg_vae/vae.py')}}}
