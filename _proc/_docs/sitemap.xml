@@ -2,10 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://slegroux.github.io/slg_vae/core.html</loc>
-    <lastmod>2022-11-30T23:47:51.734Z</lastmod>
+    <lastmod>2022-12-01T00:07:44.271Z</lastmod>
   </url>
   <url>
     <loc>https://slegroux.github.io/slg_vae/index.html</loc>
-    <lastmod>2022-11-30T23:47:57.507Z</lastmod>
+    <lastmod>2022-12-01T01:17:38.178Z</lastmod>
+  </url>
+  <url>
+    <loc>https://slegroux.github.io/slg_vae/vae.html</loc>
+    <lastmod>2022-12-01T01:17:34.220Z</lastmod>
   </url>
 </urlset>
