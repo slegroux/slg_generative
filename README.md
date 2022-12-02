@@ -16,9 +16,43 @@ pip install slg_generative
 
 Some example usage of the library
 
+### Imports
+
 ``` python
+from slg_generative.data.datasets import FashionMnistDataset
 from slg_generative.models.vae import AutoEncoder
-ae = AutoEncoder()
+from slg_generative.training import Trainer
+import torch
+from torch.utils.data import DataLoader
+from torch.optim import Adam
+import torch.nn as nn
 ```
 
-    2
+### Data
+
+``` python
+ds = FashionMnistDataset(csv_file="~/Data/fashion-mnist/fashion-mnist_train.csv")
+dl = torch.utils.data.DataLoader(ds,batch_size=128, shuffle=True, num_workers=0)
+```
+
+### Model
+
+``` python
+device = 'mps' if torch.backends.mps.is_available() else 'cpu' # or 'cuda' for nvidia gpus
+autoencoder = AutoEncoder().to(device)
+```
+
+### Training Setup
+
+``` python
+opt = Adam(autoencoder.parameters(), lr=1e-3)
+loss_func = nn.MSELoss()
+n_epochs = 5
+```
+
+### Training Loop
+
+``` python
+trainer = Trainer(autoencoder, dl, loss_func, opt, n_epochs, device)
+trainer.fit()
+```
