@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://slegroux.github.io/slg_generative/training.html</loc>
+    <lastmod>2022-12-02T05:10:23.339Z</lastmod>
+  </url>
+  <url>
+    <loc>https://slegroux.github.io/slg_generative/index.html</loc>
+    <lastmod>2022-12-02T05:10:24.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://slegroux.github.io/slg_generative/data.datasets.html</loc>
+    <lastmod>2022-12-02T05:10:24.571Z</lastmod>
+  </url>
+  <url>
+    <loc>https://slegroux.github.io/slg_generative/models.vae.html</loc>
+    <lastmod>2022-12-02T05:10:24.899Z</lastmod>
+  </url>
+</urlset>
