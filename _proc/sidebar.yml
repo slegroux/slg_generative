@@ -2,5 +2,6 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - 00_models.vae.ipynb
-      - 01_data.datasets.ipynb
+      - 00_data.datasets.ipynb
+      - 01_models.vae.ipynb
+      - 02_training.ipynb
