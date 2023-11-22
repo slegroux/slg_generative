@@ -19,12 +19,17 @@ Some example usage of the library
 ### Data
 
 ``` python
-from slg_generative.data.datasets import FashionMnistDataset
+from slg_generative.data.datasets import FashionMnistDataset, MnistDataset
 from torch.utils.data import DataLoader
 
 ds = FashionMnistDataset(csv_file="~/Data/fashion-mnist/fashion-mnist_train.csv")
 dl = DataLoader(ds,batch_size=128, shuffle=True, num_workers=0)
 val_ds = FashionMnistDataset(csv_file="~/Data/fashion-mnist/fashion-mnist_test.csv")
+val_dl = DataLoader(val_ds,batch_size=128, shuffle=True, num_workers=0)
+
+ds = MnistDataset('~/Data', train=True)
+dl = DataLoader(ds,batch_size=128, shuffle=True, num_workers=0)
+val_ds = MnistDataset('~/Data', train=False)
 val_dl = DataLoader(val_ds,batch_size=128, shuffle=True, num_workers=0)
 ```
 
@@ -55,33 +60,52 @@ n_epochs = 5
 from slg_generative.training import Trainer
 
 trainer = Trainer(autoencoder, dl, val_dl, loss_func, opt, n_epochs, device)
-trainer.fit()
+mdl = trainer.fit()
 ```
 
       0%|          | 0/5 [00:00<?, ?it/s]
 
-     Train Epoch: 1/5 [51072/60000 (85%)]   Loss: 0.622993
+     Train Epoch: 1/5 [51072/60000 (85%)]   Loss: 0.067530
 
-     20%|██        | 1/5 [00:02<00:11,  2.91s/it]
+     20%|██        | 1/5 [00:04<00:19,  4.77s/it]
 
-     Validion Loss: 0.6280178548414496
-     Train Epoch: 2/5 [51072/60000 (85%)]   Loss: 0.619879
+     Validion Loss: 0.06761456677053548
+     Train Epoch: 2/5 [51072/60000 (85%)]   Loss: 0.064981
 
-     40%|████      | 2/5 [00:05<00:08,  2.90s/it]
+     40%|████      | 2/5 [00:09<00:14,  4.76s/it]
 
-     Validion Loss: 0.6231143165238296
-     Train Epoch: 3/5 [51072/60000 (85%)]   Loss: 0.620355
+     Validion Loss: 0.0676107285897943
+     Train Epoch: 3/5 [51072/60000 (85%)]   Loss: 0.068647
 
-     60%|██████    | 3/5 [00:08<00:05,  2.99s/it]
+     60%|██████    | 3/5 [00:14<00:09,  4.80s/it]
 
-     Validion Loss: 0.621142838574663
-     Train Epoch: 4/5 [51072/60000 (85%)]   Loss: 0.603328
+     Validion Loss: 0.06759922979753229
+     Train Epoch: 4/5 [51072/60000 (85%)]   Loss: 0.067837
 
-     80%|████████  | 4/5 [00:13<00:03,  3.55s/it]
+     80%|████████  | 4/5 [00:19<00:04,  4.78s/it]
 
-     Validion Loss: 0.6198473678359503
-     Train Epoch: 5/5 [51072/60000 (85%)]   Loss: 0.631183
+     Validion Loss: 0.0676091271865217
+     Train Epoch: 5/5 [51072/60000 (85%)]   Loss: 0.067780
 
-    100%|██████████| 5/5 [00:16<00:00,  3.40s/it]
+    100%|██████████| 5/5 [00:23<00:00,  4.78s/it]
 
-     Validion Loss: 0.6195422592042368
+     Validion Loss: 0.0675089882710312
+
+### Inference
+
+``` python
+# PATH = "runs/20221202_000258/model_19"
+# device = torch.device('cpu')
+# model = AutoEncoder()
+# model.load_state_dict(torch.load(PATH, map_location=device))
+```
+
+    <All keys matched successfully>
+
+``` python
+from slg_generative.models.vae import plot_latent2D
+model = mdl.to('cpu')
+plot_latent2D(model.encoder, dl)
+```
+
+![](index_files/figure-commonmark/cell-7-output-1.png)
